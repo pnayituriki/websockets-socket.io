@@ -15,6 +15,7 @@ var io = socket(sever);
 
 io.on('connection', function (socket) {
   console.log('made socket connection', socket.id);
+  socket.broadcast.emit('connection', 'New user connected!');
 
   socket.on('chat', function (data) {
     io.sockets.emit('chats', data);

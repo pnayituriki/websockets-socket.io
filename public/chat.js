@@ -31,3 +31,10 @@ socket.on('chats', function (data) {
 socket.on('typing', function (data) {
   feedback.innerHTML = '<p><em>' + data + ' is typing...</em></p>';
 });
+
+socket.on('connection', function (data) {
+  //Send a message after a timeout of 4seconds
+  setTimeout(function () {
+    feedback.innerHTML = '<p><em>' + data + '</em></p>';
+  }, 4000);
+});
