@@ -1,0 +1,26 @@
+{
+  "name": "websockets-playlist",
+  "version": "1.0.0",
+  "description": "A chat app using WebSockets",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pnayituriki/websockets-socket.io.git"
+  },
+  "author": "pnayituriki",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pnayituriki/websockets-socket.io/issues"
+  },
+  "homepage": "https://github.com/pnayituriki/websockets-socket.io#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
