@@ -15,26 +15,34 @@ btn.addEventListener('click', function () {
     message: message.value,
     handle: handle.value,
   });
+  message.value = '';
 });
 
 message.addEventListener('keypress', function () {
-  socket.emit('typing', handle.value);
+  socket.emit('typing', {
+    description: handle.value + ' is typing...',
+    msg: false,
+  });
 });
 
 // Listen for events
 socket.on('chats', function (data) {
   feedback.innerHTML = '';
+  !data.msg && (message.disabled = false);
   output.innerHTML +=
     '<p><strong>' + data.handle + ':</strong> ' + data.message + '</p>';
 });
 
 socket.on('typing', function (data) {
-  feedback.innerHTML = '<p><em>' + data + ' is typing...</em></p>';
+  feedback.innerHTML = '<p><em>' + data.description + '</em></p>';
+
+  data.msg ? (message.disabled = false) : (message.disabled = true);
 });
 
-socket.on('connection', function (data) {
-  //Send a message after a timeout of 4seconds
+socket.on('newclientconnect', function (data) {
+  feedback.innerHTML = '<p><em>' + data.description + '</em></p>';
+
   setTimeout(function () {
-    feedback.innerHTML = '<p><em>' + data + '</em></p>';
+    feedback.innerHTML = '';
   }, 4000);
 });
